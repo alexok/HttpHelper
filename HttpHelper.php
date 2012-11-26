@@ -1,19 +1,17 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: Rick
+ * User: Alexok
  * Date: 08.08.12
  * Time: 14:34
- * To change this template use File | Settings | File Templates.
  */
 class HttpHelper
 {
     public static function loadUrl($url, $post = array(), $options = array())
     {
-        // 1. инициализация
+        // 1. Init
         $curl = curl_init();
 
-        // 2. указываем параметры, включая url
+        // 2. Set params, included URL
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -28,10 +26,10 @@ class HttpHelper
         if ($options)
             curl_setopt_array($curl, $options);
 
-        // 3. получаем HTML в качестве результата
+        // 3. Get HTML-response
         $output = curl_exec($curl);
 
-        // 4. закрываем соединение
+        // 4. Close connection
         curl_close($curl);
         return $output;
     }
