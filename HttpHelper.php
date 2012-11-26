@@ -17,6 +17,7 @@ class HttpHelper
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_TIMEOUT,        5);
 
         if ($post) {
             curl_setopt($curl, CURLOPT_POST, true);
@@ -36,15 +37,15 @@ class HttpHelper
 
     public static function checkUrl($url, $bool = true)
     {
-        $ch = curl_init();
+        $curl = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL,            $url);
-        curl_setopt($ch, CURLOPT_HEADER,         true);
-        curl_setopt($ch, CURLOPT_NOBODY,         true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT,        5);
+        curl_setopt($curl, CURLOPT_URL,            $url);
+        curl_setopt($curl, CURLOPT_HEADER,         true);
+        curl_setopt($curl, CURLOPT_NOBODY,         true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT,        5);
 
-        $r = curl_exec($ch);
+        $r = curl_exec($curl);
 
         if ($bool) {
             return strpos($r, '200 OK') !== false ? true : false;
