@@ -3,6 +3,7 @@
  * User: Alexok
  * Date: 08.08.12
  * Time: 14:34
+ * @version 1.0.1
  */
 class HttpHelper
 {
